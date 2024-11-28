@@ -1,0 +1,94 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+button {
+  margin: 15px;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover Effect */
+.hover-button {
+  background-color: #3498db;
+}
+
+.hover-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ripple Effect */
+.ripple-button {
+  background-color: #e74c3c;
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-button::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s;
+}
+
+.ripple-button:active::after {
+  animation: ripple 0.6s;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Loading Button */
+.loading-button {
+  background-color: #2ecc71;
+  position: relative;
+}
+
+.loading-button::after {
+  content: "";
+  position: absolute;
+  border: 3px solid white;
+  border-top-color: transparent;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: none;
+  animation: spin 1s linear infinite;
+}
+
+.loading-button.loading::after {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
